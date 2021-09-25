@@ -1,0 +1,29 @@
+<head>
+<script src="jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+<textarea id=text rows="20" cols="100"></textarea><br>
+
+<h2 id=foo> save </h2>
+
+<script>
+//load intial text
+window.onload = function() {
+  $.get( "getfunction.php", function(data){
+		$("#text").val(data)
+	});
+};
+
+//save text
+var el = document.getElementById('foo');
+el.onclick = showFoo;
+
+
+function showFoo() {
+	$.post( "savefunction.php", { name: $("#text").val() } );
+}
+</script>
+
+
+</body>
